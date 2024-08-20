@@ -18,8 +18,8 @@ h3 {
 }
 /* colores */
 
-.bg-verde {
-    background-color: greenyellow;
+.bg-grey {
+    background-color: lightgray;
 }
 
 .bg-blanco {
@@ -27,7 +27,7 @@ h3 {
 }
 
 .nav{
-    box-shadow: 1px 1px darkgreen;
+    
 }
 
 .navbar-brand{
