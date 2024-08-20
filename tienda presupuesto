@@ -1,0 +1,177 @@
+<!--        <section id="tienda" class="py-5 bg-light">
+            <div class="container">
+                <h2>Catálogo</h2>
+                <div class="row" id="product-list">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/producto1.jpg" class="card-img-top" alt="Producto 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 1</h5>
+                                <p class="card-text">Descripción breve del producto.</p>
+                                <button class="btn btn-primary add-to-cart" data-id="1" data-price="10">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/producto2.jpg" class="card-img-top" alt="Producto 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 2</h5>
+                                <p class="card-text">Descripción breve del producto.</p>
+                                <button class="btn btn-primary add-to-cart" data-id="2" data-price="20">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/producto3.jpg" class="card-img-top" alt="Producto 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 3</h5>
+                                <p class="card-text">Descripción breve del producto.</p>
+                                <button class="btn btn-primary add-to-cart" data-id="3" data-price="15">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h3 class="card-title">Carrito</h3>
+                                <ul class="list-group" id="cart-items">
+                                </ul>
+                                <p>Total: <span id="cart-total">0</span> €</p>
+                                <button class="btn btn-danger" id="reset-cart">Reiniciar Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h3 class="card-title">Solicitar Presupuesto</h3>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="acceptTermsQuote">
+                                    <label class="form-check-label" for="acceptTermsQuote">
+                                        Aceptar <a href="#">términos y condiciones</a>
+                                    </label>
+                                </div>
+                                <button class="btn btn-success btn-block mt-3" id="submit-quote">Solicitar Presupuesto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+Footer -->
+<script>
+        $(document).ready(function() {
+            var cartItems = [];
+            var totalPrice = 0;
+
+            // Añadir producto al carrito
+            $(document).on('click', '.add-to-cart', function() {
+                var productId = $(this).data('id');
+                var productName = $(this).closest('.card-body').find('.card-title').text();
+                var price = parseFloat($(this).data('price'));
+
+                // Verificar si el producto ya está en el carrito
+                var existingItem = cartItems.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({
+                        id: productId,
+                        name: productName,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+
+                totalPrice += price;
+                $('#cart-total').text(totalPrice.toFixed(2));
+                renderCart();
+            });
+
+            // Renderizar el carrito
+            function renderCart() {
+                $('#cart-items').empty();
+                cartItems.forEach(item => {
+                    var cartItem = `<li class="list-group-item">${item.name} - ${item.quantity} x ${item.price}€ <button class="btn btn-sm btn-danger float-right remove-from-cart" data-id="${item.id}">Quitar</button></li>`;
+                    $('#cart-items').append(cartItem);
+                });
+            }
+
+            // Quitar producto del carrito
+            $(document).on('click', '.remove-from-cart', function() {
+                var productId = $(this).data('id');
+                var itemIndex = cartItems.findIndex(item => item.id === productId);
+                var priceToRemove = cartItems[itemIndex].price;
+
+                // Reducir la cantidad o eliminar el producto del carrito
+                if (cartItems[itemIndex].quantity > 1) {
+                    cartItems[itemIndex].quantity--;
+                } else {
+                    cartItems.splice(itemIndex, 1);
+                }
+
+                totalPrice -= priceToRemove;
+                $('#cart-total').text(totalPrice.toFixed(2));
+                renderCart();
+            });
+
+            // Reiniciar carrito
+            $('#reset-cart').click(function() {
+                cartItems = [];
+                totalPrice = 0;
+                $('#cart-total').text(totalPrice.toFixed(2));
+                renderCart();
+            });
+
+            // Pedir presupuesto (simulación)
+            $('#submit-quote').click(function() {
+                if ($('#acceptTermsQuote').prop('checked')) {
+                    alert('Presupuesto solicitado con éxito.');
+                } else {
+                    alert('Debe aceptar los términos y condiciones para continuar.');
+                }
+            });
+
+            // Validar checkbox de términos y condiciones en el formulario de contacto
+            $('form').submit(function(event) {
+                if ($(this).attr('id') === 'acceptTerms' && !$('#acceptTerms').prop('checked')) {
+                    event.preventDefault();
+                    alert('Debe aceptar los términos y condiciones para enviar el formulario.');
+                }
+            });
+        });
+        <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Seleccionar el formulario
+                var form = document.getElementById('contactForm');
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            }, false);
+        })();
+    </script>
+(function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var form = document.getElementById('contactForm');
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            }, false);
+        })();
+    });
