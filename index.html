@@ -17,6 +17,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Initialize EmailJS with your public key
+            emailjs.init("eqmTncrY1O_kzluU2");
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Add event listener for the form submission
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Send the form using EmailJS service
+                emailjs.sendForm('service_j6cmatu', 'template_ovrvkla', this)
+                    .then(function() {
+                        console.log('SUCCESS!'); // Log success message
+                        alert('Message sent successfully!');
+                    }, function(error) {
+                        console.log('FAILED...', error); // Log error message
+                        alert('Failed to send message. Please try again later.');
+                    });
+            });
+        }
+    </script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- Barra de navegación fija -->
