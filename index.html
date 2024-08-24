@@ -317,5 +317,19 @@
         }, false);
     })();
 </script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        var termsCheck = document.getElementById('termsCheck');
+
+        // Verificar si el checkbox está marcado
+        if (!termsCheck.checked) {
+            // Prevenir el envío del formulario
+            event.preventDefault();
+            
+            // Mostrar mensaje de error o dar feedback al usuario
+            alert('Debes aceptar los términos y condiciones antes de enviar el formulario.');
+        }
+    });
+</script>
 </body>
 </html>
