@@ -24,23 +24,6 @@
             emailjs.init("eqmTncrY1O_kzluU2");
         })();
     </script>
-    <script type="text/javascript">
-        window.onload = function() {
-            // Add event listener for the form submission
-            document.getElementById('contactForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Send the form using EmailJS service
-                emailjs.sendForm('service_j6cmatu', 'template_ovrvkla', this)
-                    .then(function() {
-                        console.log('SUCCESS!'); // Log success message
-                        alert('Message sent successfully!');
-                    }, function(error) {
-                        console.log('FAILED...', error); // Log error message
-                        alert('Failed to send message. Please try again later.');
-                    });
-            });
-        }
-    </script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- Barra de navegación fija -->
@@ -299,37 +282,43 @@
     </footer>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-vDc2cXZk/CDyFRRorn7EyLCa1Rf+0abEhXGzG+gEsd8vJ8rOz+8/rqf63ElIlJ5E" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+yGfFJ6B18jKtu6K3zQ4PpovGp9jk9OIcW0" crossorigin="anonymous"></script>
-    <script>
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            var form = document.getElementById('contactForm');
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        }, false);
-    })();
-</script>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        var termsCheck = document.getElementById('termsCheck');
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-vDc2cXZk/CDyFRRorn7EyLCa1Rf+0abEhXGzG+gEsd8vJ8rOz+8/rqf63ElIlJ5E" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+yGfFJ6B18jKtu6K3zQ4PpovGp9jk9OIcW0" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        // Agregar el event listener para la validación y envío del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío inmediato
 
-        // Verificar si el checkbox está marcado
-        if (!termsCheck.checked) {
-            // Prevenir el envío del formulario
-            event.preventDefault();
-            
-            // Mostrar mensaje de error o dar feedback al usuario
-            alert('Debes aceptar los términos y condiciones antes de enviar el formulario.');
-        }
-    });
+            var form = this;
+            var termsCheck = document.getElementById('termsCheck');
+
+            // Verificar si el checkbox está marcado
+            if (!termsCheck.checked) {
+                // Mostrar mensaje de error y detener el envío
+                alert('Debes aceptar los términos y condiciones antes de enviar el formulario.');
+                return;
+            }
+
+            // Verificar la validez del formulario
+            if (form.checkValidity() === false) {
+                // Detener el envío si hay campos inválidos
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Enviar el formulario usando EmailJS
+            emailjs.sendForm('service_j6cmatu', 'template_ovrvkla', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                    alert('¡Mensaje enviado con éxito!');
+                    form.reset(); // Limpiar el formulario después de enviar
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.');
+                });
+        });
 </script>
 </body>
 </html>
