@@ -8,7 +8,7 @@
 
 .container p {
     text-align: justify;
-    font-family: merienda;
+    font-family: roboto;
     font-weight: 400;
 }
 
@@ -18,9 +18,15 @@ h4 {
 }
 
 h3 {
-    font-family: montserrat;
+    font-family: gupter;
     text-align: center;
 }
+
+h2 {
+    font-family: roboto;
+    text-align: center;
+}
+
 /* colores */
 
 .bg-grey {
@@ -29,10 +35,6 @@ h3 {
 
 .bg-blanco {
     background-color: white;
-}
-
-.nav{
-    
 }
 
 .navbar-brand{
@@ -46,7 +48,6 @@ h3 {
 }
 
 .nav-link::after {
-    content: '';
     display: block;
     width: 0;
     height: 2px; /* Ajusta el grosor de la línea de subrayado */
