@@ -48,6 +48,7 @@ h2 {
 }
 
 .nav-link::after {
+    content:'';    
     display: block;
     width: 0;
     height: 2px; /* Ajusta el grosor de la línea de subrayado */
