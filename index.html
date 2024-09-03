@@ -310,6 +310,23 @@
     });
   });
 </script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function adjustLogoAlignment() {
+                var navbarBrand = document.querySelector('.navbar-brand');
 
+                if (window.innerWidth < 576) {
+                    navbarBrand.classList.add('center-logo');
+                } else {
+                    navbarBrand.classList.remove('center-logo');
+                }
+            }
+            // Ejecutar al cargar la página
+            adjustLogoAlignment();
+
+            // Ajustar cuando la ventana cambia de tamaño
+            window.addEventListener('resize', adjustLogoAlignment);
+        });
+    </script>
 </body>
 </html>

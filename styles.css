@@ -66,3 +66,10 @@ h2 {
 .img-1 {
     max-width: 100%;
 }
+
+.center-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
