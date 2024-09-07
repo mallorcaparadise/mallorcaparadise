@@ -63,6 +63,10 @@ h2 {
     width: 100%; /* La línea se extiende al 100% del ancho del enlace */
 }
 
+.nav {
+    background-color: skyblue;
+}
+
 .img-1 {
     max-width: 100%;
 }
