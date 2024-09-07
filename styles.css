@@ -63,6 +63,16 @@ h2 {
     width: 100%; /* La línea se extiende al 100% del ancho del enlace */
 }
 
+/* Cambia el color de los enlaces del menú cuando están activos */
+.navbar-nav .nav-link.active {
+    color: #c2cced !important; /* Cambia el color por el que desees */
+}
+
+/* Cambia el color de los enlaces del menú cuando se hace hover */
+.navbar-nav .nav-link:hover {
+    color: #c2cced !important; /* Cambia el color por el que desees */
+}
+
 .bg-blue {
     background-color: #2557ff;
 }
