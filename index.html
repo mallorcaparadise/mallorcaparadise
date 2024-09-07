@@ -246,7 +246,39 @@
                     </div>
             </div>
     </footer>
+    <!-- Aviso de Cookies -->
+<div id="cookieNotice" class="cookie-notice">
+  <p>Este sitio web utiliza cookies para mejorar tu experiencia. Puedes aceptar, rechazar o personalizar tus preferencias. 
+    <a href="condiciones.html">Más información</a>.
+  </p>
+  <div class="cookie-buttons">
+    <button id="acceptCookies" class="btn btn-primary">Aceptar todas</button>
+    <button id="rejectCookies" class="btn btn-secondary">Rechazar todas</button>
+    <button id="customizeCookies" class="btn btn-light">Personalizar</button>
+  </div>
+</div>
 
+<!-- Modal para Personalizar Preferencias -->
+<div id="cookieModal" class="cookie-modal">
+  <div class="cookie-modal-content">
+    <h2>Preferencias de Cookies</h2>
+    <form id="cookieForm">
+      <div class="cookie-option">
+        <input type="checkbox" id="necessaryCookies" checked disabled>
+        <label for="necessaryCookies">Cookies necesarias (obligatorias)</label>
+      </div>
+      <div class="cookie-option">
+        <input type="checkbox" id="analyticsCookies">
+        <label for="analyticsCookies">Cookies de análisis</label>
+      </div>
+      <div class="cookie-option">
+        <input type="checkbox" id="marketingCookies">
+        <label for="marketingCookies">Cookies de marketing</label>
+      </div>
+      <button type="button" id="savePreferences" class="btn btn-primary">Guardar preferencias</button>
+    </form>
+  </div>
+</div>
     <!-- jQuery, Popper.js, Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-vDc2cXZk/CDyFRRorn7EyLCa1Rf+0abEhXGzG+gEsd8vJ8rOz+8/rqf63ElIlJ5E" crossorigin="anonymous"></script>
@@ -332,5 +364,102 @@
             window.addEventListener('resize', adjustLogoAlignment);
         });
     </script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cookieNotice = document.getElementById('cookieNotice');
+    var acceptCookies = document.getElementById('acceptCookies');
+    var rejectCookies = document.getElementById('rejectCookies');
+    var customizeCookies = document.getElementById('customizeCookies');
+    var cookieModal = document.getElementById('cookieModal');
+    var savePreferences = document.getElementById('savePreferences');
+
+    // Verificar si el usuario ya ha establecido sus preferencias
+    if (!localStorage.getItem('cookiesPreferencesSet')) {
+      cookieNotice.style.display = 'block';
+    } else {
+      applyCookiesPreferences();
+    }
+
+    // Aceptar todas las cookies
+    acceptCookies.addEventListener('click', function() {
+      localStorage.setItem('cookiesPreferencesSet', 'true');
+      localStorage.setItem('necessaryCookies', 'true');
+      localStorage.setItem('analyticsCookies', 'true');
+      localStorage.setItem('marketingCookies', 'true');
+      cookieNotice.style.display = 'none';
+      applyCookiesPreferences();
+    });
+
+    // Rechazar todas las cookies
+    rejectCookies.addEventListener('click', function() {
+      localStorage.setItem('cookiesPreferencesSet', 'true');
+      localStorage.setItem('necessaryCookies', 'true'); // Siempre activas
+      localStorage.setItem('analyticsCookies', 'false');
+      localStorage.setItem('marketingCookies', 'false');
+      cookieNotice.style.display = 'none';
+      applyCookiesPreferences();
+    });
+
+    // Personalizar cookies
+    customizeCookies.addEventListener('click', function() {
+      cookieModal.style.display = 'block';
+    });
+
+    // Guardar preferencias personalizadas
+    savePreferences.addEventListener('click', function() {
+      var analyticsCookies = document.getElementById('analyticsCookies').checked;
+      var marketingCookies = document.getElementById('marketingCookies').checked;
+
+      localStorage.setItem('cookiesPreferencesSet', 'true');
+      localStorage.setItem('necessaryCookies', 'true'); // Siempre activas
+      localStorage.setItem('analyticsCookies', analyticsCookies);
+      localStorage.setItem('marketingCookies', marketingCookies);
+
+      cookieModal.style.display = 'none';
+      cookieNotice.style.display = 'none';
+      applyCookiesPreferences();
+    });
+
+    // Cerrar el modal si se hace clic fuera del contenido
+    window.onclick = function(event) {
+      if (event.target == cookieModal) {
+        cookieModal.style.display = "none";
+      }
+    }
+
+    // Aplicar las preferencias de cookies
+    function applyCookiesPreferences() {
+      // Aquí puedes gestionar la carga de scripts según las preferencias
+      if (localStorage.getItem('analyticsCookies') === 'true') {
+        // Cargar scripts de análisis
+        loadAnalyticsScripts();
+      }
+
+      if (localStorage.getItem('marketingCookies') === 'true') {
+        // Cargar scripts de marketing
+        loadMarketingScripts();
+      }
+    }
+
+    // Funciones para cargar los scripts
+    function loadAnalyticsScripts() {
+      // Ejemplo: Google Analytics
+      var script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=TU_ID_DE_ANALYTICS';
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'TU_ID_DE_ANALYTICS');
+    }
+
+    function loadMarketingScripts() {
+      // Cargar scripts de marketing si los tienes
+    }
+  });
+</script>
+
 </body>
 </html>
