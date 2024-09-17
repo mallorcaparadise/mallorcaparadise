@@ -1,6 +1,3 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
-Allow: /public/
-
-Sitemap: https://tusitio.com/sitemap.xml
+Disallow: /private/  # Bloquea esta carpeta
+Sitemap: https://www.mallorcaparadise.com/sitemap.xml
