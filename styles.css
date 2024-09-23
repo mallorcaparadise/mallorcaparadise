@@ -1,11 +1,3 @@
-/* Make the image fully responsive */
-
-.carousel-inner img {
-        width: 100%;
-        height: 100%;
-        border-radius: 15px;
-}
-
 .container p {
     text-align: justify;
     font-family: Open+Sans;
@@ -164,3 +156,29 @@ h2 {
   .cookie-option {
     margin-bottom: 15px;
   }
+
+  /* carousel fotos */
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.carousel-indicators img{
+    width: 120px;
+    height: 80px;
+    display: block;
+}
+
+.carousel-indicators li{
+    width: max-content!important;
+}
+
+.carousel-indicators{
+    position: unset;
+}
+
+.carousel-indicators li.active img{
+    border: 2px solid blue;
+}
