@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Tu Página Web</title>
+    <style>
+        /* Estilos adicionales para el banner */
+        .banner {
+            position: relative;
+            text-align: center;
+            color: white;
+            height: 300px; /* Ajusta la altura según necesites */
+            background-image: url('fotos/catedral.webp'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .banner h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em; /* Tamaño del texto */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav navbar navbar-expand-sm navbar-light bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html">
+                <img src="fotos/logo2.webp" alt="Logo" width="30" height="30" class="d-inline-block align-top"> Mallorca Paradise
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ol class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="viajes.html">Viajes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="despedidas.html">Despedidas de solter@</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="empresas.html">Empresas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="sobrenosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="galeria.html">Galería</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner">
+        <h1>Viajes</h1>
+    </div>
+
+    <div class="container" style="margin-top: 320px;">
+        <!-- Aquí va el contenido de tu página -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
