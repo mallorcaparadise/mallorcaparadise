@@ -316,3 +316,18 @@ h2 {
     top: 75%;
     left: 50%;
 }
+
+@media (max-width: 576px) {
+    .bannerindex h1 {
+        font-size: 1.5em;
+        }
+    .bannerviajes h1 {
+        font-size: 1.5em;
+        }
+        .bannerdespedidas h1 {
+        font-size: 1.5em;
+        }
+        .bannerempresas h1 {
+        font-size: 1.5em;
+        }
+    }
