@@ -317,6 +317,75 @@ h2 {
     left: 50%;
 }
 
+/* Estilos adicionales para el banner */
+.bannernosotros {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 400px; /* Ajusta la altura según necesites */
+    background-image: url('fotos/nosotrosbanner.webp'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+}  
+.bannernosotros h1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em; /* Tamaño del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.bannernosotros p{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+}
+/* Estilos adicionales para el banner */
+.bannercontacto {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 400px; /* Ajusta la altura según necesites */
+    background-image: url('fotos/contactobanner.webp'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+}  
+.bannercontacto h1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em; /* Tamaño del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.bannercontacto p{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+}
+/* Estilos adicionales para el banner */
+.bannergaleria {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 400px; /* Ajusta la altura según necesites */
+    background-image: url('fotos/galeriabanner.webp'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+}  
+.bannergaleria h1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em; /* Tamaño del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.bannergaleria p{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+}
 @media (max-width: 576px) {
     .bannerindex h1 {
         font-size: 1.5em;
