@@ -90,24 +90,27 @@ h2 {
         .navbar-toggler {
             position: absolute;
             right: 15px; /* Ajusta este valor según sea necesario */
-            top: 8px; /* Ajusta este valor según sea necesario */
+            top: 25px; /* Ajusta este valor según sea necesario */
         }
 
         @media (min-width: 576px) {
             .navbar-toggler {
                 position: static;
                 margin-left: auto;
-                color: white;
             }
 
             .navbar-brand {
                 text-align: left; /* Restaura el texto alineado a la izquierda en pantallas más grandes */
             }
-            .banner h1 {
-                font-size: 1.5em; /* Tamaño de fuente más pequeño para pantallas pequeñas */
-            }
         }
+
+.navbar-toggler-icon{
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
   /* Aviso de Cookies */
+
   .cookie-notice {
     position: fixed;
     bottom: 0;
