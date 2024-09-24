@@ -97,10 +97,14 @@ h2 {
             .navbar-toggler {
                 position: static;
                 margin-left: auto;
+                color: white;
             }
 
             .navbar-brand {
                 text-align: left; /* Restaura el texto alineado a la izquierda en pantallas más grandes */
+            }
+            .banner h1 {
+                font-size: 1.5em; /* Tamaño de fuente más pequeño para pantallas pequeñas */
             }
         }
   /* Aviso de Cookies */
